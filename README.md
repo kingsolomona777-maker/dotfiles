@@ -5,7 +5,7 @@ Account-level GitHub Codespaces personalization for this account.
 ## What this installs
 
 - OpenCode CLI (current v2 installer) in every **new** Codespace that uses this dotfiles repository.
-- A global OpenCode configuration at `~/.config/opencode/opencode.json`.
+- A global OpenCode configuration linked to `~/.config/opencode/opencode.json`.
 - OpenRouter as the model provider, using the `OPENROUTER_API_KEY` environment variable.
 
 ## Required secret
@@ -16,7 +16,7 @@ The key is never stored in this repository. Do not paste it into a config file, 
 
 ## Installation
 
-GitHub Codespaces runs `install.sh` when a new Codespace is created. The script is safe to rerun. Existing Codespaces do not automatically receive dotfiles changes; run `bash ~/dotfiles/install.sh` there if needed, or create a new Codespace.
+GitHub Codespaces runs `install.sh` when a new Codespace is created. The script links the global config and is safe to rerun. Existing Codespaces do not automatically receive dotfiles changes; rerun `install.sh` from the dotfiles checkout or create a new Codespace.
 
 ## Default model
 
