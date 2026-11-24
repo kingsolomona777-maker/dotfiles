@@ -2,6 +2,18 @@
 set -Eeuo pipefail
 
 log() { printf '[dotfiles] %s\n' "$*"; }
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_CONFIG="$DOTFILES_DIR/.config/opencode/opencode.json"
+TARGET_DIR="$HOME/.config/opencode"
+TARGET_CONFIG="$TARGET_DIR/opencode.json"
+
+mkdir -p "$TARGET_DIR"
+if [ -f "$SOURCE_CONFIG" ]; then
+  ln -sfn "$SOURCE_CONFIG" "$TARGET_CONFIG"
+  log "Linked global OpenCode config."
+else
+  log "OpenCode config not found at $SOURCE_CONFIG; leaving existing config untouched."
+fi
 
 if ! command -v curl >/dev/null 2>&1; then
   log "curl is required to install OpenCode; skipping installation."
